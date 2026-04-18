@@ -29,7 +29,7 @@ class CittaResource extends Resource
 
     protected static ?int $navigationSort = 5;
 
-    protected static ?string $navigationLabel = 'Città';
+    protected static ?string $navigationLabel = 'Città/Frazione';
 
     protected static ?string $modelLabel = 'Città';
 
