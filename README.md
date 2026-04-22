@@ -7,7 +7,7 @@ Piattaforma di annunci per la vendita di automobili, costruita con **Laravel 13*
 - **PHP 8.4** / **Laravel 13**
 - **Filament v5** — pannello admin
 - **MariaDB** — database relazionale
-- **Vite** — frontend build tool
+- **Vite** + **Alpine.js** — frontend build tool
 
 ## Funzionalità implementate
 
@@ -18,6 +18,19 @@ Piattaforma di annunci per la vendita di automobili, costruita con **Laravel 13*
 - Selezione della **Città / Frazione** tramite ricerca testuale (autocomplete)
 - Dopo la selezione, vengono visualizzati automaticamente: Comune, Provincia, Regione, Paese
 - Tabella annunci con colonne: Titolo, Città, Provincia, data di creazione
+- **Galleria immagini**: selezione visuale tramite popup, caricamento di nuove immagini direttamente dall'annuncio
+
+### Galleria (`/admin/immaginis`)
+
+- Caricamento e gestione delle immagini condivise
+- Le immagini vengono salvate in `storage/app/public/galleria/`
+- Possibilità di associare le immagini agli annunci (relazione many-to-many)
+
+### Frontend pubblico
+
+- Homepage con lista degli annunci cliccabili
+- Pagina dettaglio annuncio con galleria immagini (foto principale + miniature cliccabili)
+- Navigazione con link Home
 
 ### Localizzazione (`/admin`) — gruppo collassato
 
@@ -36,14 +49,18 @@ git clone https://github.com/episkob/car-dash.git
 cd car-dash
 
 composer install
+npm install
 cp .env.example .env
 php artisan key:generate
 
 # configurare il database in .env, poi:
 php artisan migrate
+php artisan storage:link
+npm run build
 php artisan make:filament-user
 ```
 
 ## Licenza
 
 MIT
+

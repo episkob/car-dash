@@ -2,7 +2,9 @@
 
 namespace App\Filament\Resources\Annuncios\Schemas;
 
+use App\Filament\Forms\Components\GalleryPicker;
 use App\Models\Citta;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -70,6 +72,19 @@ class AnnuncioForm
                     ->label('Testo')
                     ->required()
                     ->rows(8)
+                    ->columnSpanFull(),
+
+                GalleryPicker::make('immagini')
+                    ->label('Immagini dalla galleria')
+                    ->columnSpanFull(),
+
+                FileUpload::make('nuove_immagini')
+                    ->label('Carica nuove immagini nella galleria')
+                    ->image()
+                    ->multiple()
+                    ->disk('public')
+                    ->directory('galleria')
+                    ->imagePreviewHeight('120')
                     ->columnSpanFull(),
             ]);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Annuncios\Schemas;
 
+use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
@@ -33,6 +34,12 @@ class AnnuncioInfolist
                 TextEntry::make('updated_at')
                     ->label('Aggiornato il')
                     ->dateTime('d.m.Y H:i'),
+
+                ImageEntry::make('immagini.path')
+                    ->label('Immagini')
+                    ->disk('public')
+                    ->height(120)
+                    ->columnSpanFull(),
             ]);
     }
 }
